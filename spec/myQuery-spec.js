@@ -1,7 +1,7 @@
 $(function(){
   describe('myQuery', function() {
     beforeEach(function() {
-      setFixtures('<html><head>' 
+      setFixtures('<html><head>'
         + '<script type="text/javascript" src="lib/myQuery.js"></script>'
         + '<title>This is a website!</title></head><body>'
         + '<h1>I\'m a header!</h1>'
@@ -15,18 +15,19 @@ $(function(){
         + 'large-font and the class blue!</p></p></body></html>'
       );
     });
+
     it('should be able to select elements by tag', function() {
-      var selectedElArr = myQuery('div')[0];
+      var selectedElArr = myQuery('div').element;
       expect(selectedElArr).toEqual(document.getElementsByTagName('div'));
     });
 
     it('should be able to select elements by class', function() {
-      var selectedElArr = myQuery('.blue')[0];
+      var selectedElArr = myQuery('.blue').element;
       expect(selectedElArr).toEqual(document.getElementsByClassName('blue'));
     });
 
     it('should be able to select elements by id', function() {
-      var selectedElArr = myQuery('#large-font')[0];
+      var selectedElArr = myQuery('#large-font').element;
       expect(selectedElArr).toEqual(document.getElementById('large-font'));
     });
 
@@ -46,7 +47,7 @@ $(function(){
     });
 
     it('should append an element to all selected elements with #append', function() {
-      var selectedElArr; 
+      var selectedElArr;
       myQuery('.pink').append('<span>Hello</span>');
       selectedElArr = document.getElementsByClassName('pink');
       expect(selectedElArr[0].lastChild.outerHTML).toEqual('<span>Hello</span>');
